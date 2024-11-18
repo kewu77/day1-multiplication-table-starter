@@ -39,6 +39,14 @@ public class MultiplicationTableBuilder {
         return multiplicationRows;
     }
 
+    public String generateMultiplicationTable(List<String> multiplicationRows){
+        String multiplicationTable = "";
+        for(int i = 0; i < multiplicationRows.size() - 1; i++){
+            multiplicationTable += multiplicationRows.get(i) + "\n";
+        }
+        multiplicationTable += multiplicationRows.get(multiplicationRows.size() - 1);
+        return multiplicationTable;
+    }
 
     public String build(int start, int end) {
         return "";
