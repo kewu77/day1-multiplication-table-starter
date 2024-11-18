@@ -9,13 +9,12 @@ public class MultiplicationTableBuilder {
         MultiplicationTableBuilder builder = new MultiplicationTableBuilder();
         int start = 2;
         int end = 4;
-//        String multiplicationTable = builder.build(start, end);
 
-        System.out.println(builder.generateMultiplicationRows(2,4,true));
+        builder.printMultiplicationTable(start,end);
     }
 
     public boolean checkNumber(int start, int end){
-        return start >= end && start > 1 && start <= 1000 && end > 1 && end <= 1000;
+        return start <= end && start > 1 && start <= 1000 && end > 1 && end <= 1000;
     }
 
     public String generateRow(int start, int end){
@@ -41,6 +40,8 @@ public class MultiplicationTableBuilder {
 
     public String generateMultiplicationTable(List<String> multiplicationRows){
         String multiplicationTable = "";
+        if(multiplicationRows.size() == 0)
+            return multiplicationTable;
         for(int i = 0; i < multiplicationRows.size() - 1; i++){
             multiplicationTable += multiplicationRows.get(i) + "\n";
         }
@@ -48,8 +49,11 @@ public class MultiplicationTableBuilder {
         return multiplicationTable;
     }
 
-    public String build(int start, int end) {
-        return "";
+    public void printMultiplicationTable(int start, int end) {
+        boolean isValid = checkNumber(start,end);
+        List<String> multiplicationRows = generateMultiplicationRows(start,end,isValid);
+        String multiplicationTable = generateMultiplicationTable(multiplicationRows);
+        System.out.println(multiplicationTable);
     }
 }
 
