@@ -1,13 +1,17 @@
 package com.tw;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MultiplicationTableBuilder {
 
     public static void main(String[] args) {
         MultiplicationTableBuilder builder = new MultiplicationTableBuilder();
         int start = 2;
         int end = 4;
-        String multiplicationTable = builder.build(start, end);
-        System.out.println(multiplicationTable);
+//        String multiplicationTable = builder.build(start, end);
+
+        System.out.println(builder.generateMultiplicationRows(2,4,true));
     }
 
     public boolean checkNumber(int start, int end){
@@ -16,14 +20,28 @@ public class MultiplicationTableBuilder {
 
     public String generateRow(int start, int end){
         String result = "";
-        for(int i = start; i < end; i++){
-            result += start + "*" + i + "=" + start * i + "\t";
+        int i = start;
+        for(; i < end; i++){
+            result += i + "*" + end + "=" + end * i + "\t";
         }
-        result += start + "*" + end + "=" + start * end;
+        result += i + "*" + end + "=" + i * end;
         return result;
     }
+
+    public List<String> generateMultiplicationRows(int start, int end, boolean isValid){
+        if(!isValid)
+            return new ArrayList<>();
+        List<String> multiplicationRows = new ArrayList<>();
+        for(int i = start; i <= end; i++){
+            String multiplicationRow = generateRow(start,i);
+            multiplicationRows.add(multiplicationRow);
+        }
+        return multiplicationRows;
+    }
+
 
     public String build(int start, int end) {
         return "";
     }
 }
+
