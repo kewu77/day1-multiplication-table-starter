@@ -8,9 +8,9 @@ public class MultiplicationTableBuilder {
     public static void main(String[] args) {
         MultiplicationTableBuilder builder = new MultiplicationTableBuilder();
         int start = 2;
-        int end = 4;
+        int end = 9;
 
-        builder.printMultiplicationTable(start,end);
+        System.out.println(builder.printMultiplicationTable(start,end));
     }
 
     public boolean checkNumber(int start, int end){
@@ -41,7 +41,7 @@ public class MultiplicationTableBuilder {
     public String generateMultiplicationTable(List<String> multiplicationRows){
         String multiplicationTable = "";
         if(multiplicationRows.size() == 0)
-            return multiplicationTable;
+            return null;
         for(int i = 0; i < multiplicationRows.size() - 1; i++){
             multiplicationTable += multiplicationRows.get(i) + "\n";
         }
@@ -49,11 +49,11 @@ public class MultiplicationTableBuilder {
         return multiplicationTable;
     }
 
-    public void printMultiplicationTable(int start, int end) {
+    public String printMultiplicationTable(int start, int end) {
         boolean isValid = checkNumber(start,end);
         List<String> multiplicationRows = generateMultiplicationRows(start,end,isValid);
         String multiplicationTable = generateMultiplicationTable(multiplicationRows);
-        System.out.println(multiplicationTable);
+        return multiplicationTable;
     }
 }
 
