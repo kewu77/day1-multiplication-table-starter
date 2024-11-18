@@ -11,6 +11,10 @@ public class MultiplicationTableBuilder {
         System.out.println(multiplicationTable);
     }
 
+    public boolean checkNumber(int start, int end){
+        return start >= end && start > 1 && start <= 1000 && end > 1 && end <= 1000;
+    }
+
     public String build(int start, int end) {
         return "";
     }
